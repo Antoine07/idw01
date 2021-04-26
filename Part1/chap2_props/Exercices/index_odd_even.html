@@ -24,12 +24,15 @@
     <div id="root"></div>
     <script type="text/babel">
 
-        class Number extends React.Component {
+        class Numbers extends React.Component {
 
             render(){
+                const { numbers } = this.props;
 
                 return(
-                    <p>{this.props.number}</p>
+                    <ul>
+                        {numbers.map((num, i) => <li key={i}>{num}</li>)}
+                    </ul>
                 )
             }
         }
@@ -81,9 +84,7 @@
                     return (
                         <div className="container">
                             <h1>Number Even </h1>
-                                <ul>
-                                    {this.run().map((num, i) => <li key={i}>{num}</li>)}
-                                </ul>
+                            <Numbers numbers={this.run()} />
                         </div>
                     )
 
