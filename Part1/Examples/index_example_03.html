@@ -19,6 +19,16 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
+
+        class Message extends React.Component {
+
+            render(){
+
+                return(
+                    <p>{this.props.content ? this.props.content : 'no message'}</p>
+                )
+            }
+        }
         // Création de composant en créant des classes
         // vous étendez de la librarie React.Component pour créer un compasant
         class Hello extends React.Component {
@@ -31,7 +41,7 @@
                         <h1>{this.props.message}</h1>
                         <p>{this.props.subtitle}</p>
                         {/* Ecrivez ici un composant Message qui affiche un message de votre choix */}
-
+                        <Message content="Mon message" />
                     </div>
                 )
             }
