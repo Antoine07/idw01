@@ -94,3 +94,8 @@ time.toLocaleTimeString();
 ```
 
 Pensez à reloader le ReactDOM.render avec le temps qui passe ...
+
+
+## Exercice 
+
+Affichez de 1 à 100 les nombres pairs dans un composant. Utilisez deux composants App et Number.
