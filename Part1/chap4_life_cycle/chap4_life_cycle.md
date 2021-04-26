@@ -99,10 +99,16 @@ En résumé retenez l'existence des méthodes suivantes dans le cycle de vie :
 
 ## Exercice life cycle
 
-En vous aidant du life cycle de React créez un pavage dynamique d'étoiles. Chaque ligne doit comporter 20 étoiles. 
+En vous aidant du life cycle de React créez un pavage dynamique d'étoiles. Chaque ligne doit comporter 20 étoiles. Découpez l'exercice en plusieurs parties.
 
-1. Dans un premier temps tracez les lignes de 20 étoiles l'une à la suite de l'autre. Vous pouvez les tracez avec un délai que vous choisissez.
+1. Dans un premier temps tracez une ligne de 20 étoiles l'une à la suite de l'autre avec un délais de 500ms.
+2. Tracez une ligne puis une fois celle-ci tracée supprimez la.
+3. (difficile) Maintenant faite en sorte que chaque étoile sur une ligne s'affiche avec un délais de 500ms. Une fois que la ligne comporte 20 étoiles passez à la ligne suivante. Vous devez tracer 10 lignes au total.
 
-2. Maintenant faite en sorte que chaque étoile sur une ligne s'affiche avec un délais de 500ms. Une fois que la ligne comporte 20 étoiles passez à la ligne suivante. Vous devez tracer 10 lignes au total.
+```text
 
-![stars](./images/stars.gif)
+* * * * ...
+
+```
+
+
