@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+
+        .principal {
+            background-color: beige;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // Racine de l'arbre de React
+        class Clock extends React.Component {
+
+            // attention vous devez passer au constructeur les props et exécutez super pour
+            // la classe Parente de React Component
+
+            // Pour l'instant c'est une mauvaise approche ...
+            // constructor(props){
+            //     super(props);
+            //     this.time = new Date;
+            //     // this.timer();
+            //     console.log(this.time)
+            // }
+
+            // timer(){
+
+            //     setInterval(()=> {
+            //         this.time = new Date;
+            //         console.log(this.time)
+            //     }, 1000)
+            // }
+
+            render() {
+                const time = new Date;
+                console.log('render',time);
+
+                return (
+                    <div className="container">
+                        <h1>Clock </h1>
+                        { time.toLocaleTimeString() }
+                    </div>
+                )
+            }
+        }
+        
+        setInterval(() =>{
+            ReactDOM.render(
+                <Clock />,
+                document.getElementById('root')
+            )
+        }
+        , 1000 );
+
+    </script>
+</body>
+
+</html>
