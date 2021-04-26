@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+
+        .principal {
+            background-color: beige;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    
+        class App extends  React.Component{
+            constructor(props){
+                super(props);
+
+                this.state = {
+                    life : true
+                };
+                
+            }
+
+            componentDidMount(){
+                setTimeout(() => {
+                    this.setState({
+                        life : false
+                    })
+                }, 5000);
+            }
+
+            render(){
+                if(this.state.life)
+                    return( 
+                        <Clock />
+                    );
+
+                return (
+                    <p>Démontage</p>
+                )
+            }
+        }
+
+        class Clock extends React.Component {
+            constructor(props){
+                super(props);
+
+                this.state = {
+                    time : new Date
+                };
+
+                this.interval = null;
+            }
+
+            componentDidMount(){
+                this.interval = setInterval(() => {
+                    this.setState({
+                        time : new Date
+                    });
+                    console.log(Math.random()); // testez si vous ne faites pas le clearinterval
+                }, 1000);
+            }
+
+            // démontage suppression du composant dans la mémoire
+            componentWillUnmount(){
+                console.log('nettoyage');
+                clearInterval(this.interval);
+            }
+          
+            render() {
+                return (
+                    <div className="container">
+                        <p>Time : {this.state.time.toLocaleTimeString()}</p>
+                    </div>
+                )
+            }
+        }
+        
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>
