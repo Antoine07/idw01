@@ -92,3 +92,5 @@ const time = new Date;
 // pour le rendu attention aux accolades pour interprétés le code dans le HTML
 time.toLocaleTimeString();
 ```
+
+Pensez à reloader le ReactDOM.render avec le temps qui passe ...
