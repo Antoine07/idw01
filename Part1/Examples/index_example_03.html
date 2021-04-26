@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <!-- Library -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // Création de composant en créant des classes
+        // vous étendez de la librarie React.Component pour créer un compasant
+        class Hello extends React.Component {
+
+            render() {
+                // props vous permet de récupérer les attributs de votre composant
+                // et de les lire dans le rendu 
+                return (
+                    <div className="heading" >
+                        <h1>{this.props.message}</h1>
+                        <p>{this.props.subtitle}</p>
+                        {/* Ecrivez ici un composant Message qui affiche un message de votre choix */}
+
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+            <Hello message="Hello React" subtitle="Enjoy ! " />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" >
+    // écriture en JSX d'un composant React.createElement, c'est une fonction 
+    // qui retourne un composant 
+            const El = () => {
+
+                // les parenthèses forcent JS à retourner l'ensemble du code 
+                return (
+                    <h1 className="main">
+                        Hello, world!
+                    </h1>
+                )
+            };
+        // montage du composant
+        ReactDOM.render( <El />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>
