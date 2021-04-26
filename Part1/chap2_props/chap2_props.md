@@ -77,10 +77,20 @@ Voici pour vous aider la hiérarchie des composants :
 
 ## 2. Exercice Clock
 
-Pour faire cet exercice dans un fichier **ex2_clock.html** comme pour l'exercice précédent importez les dépendances React.
+Pour faire cet exercice dans un fichier **clock.html** comme pour l'exercice précédent importez les dépendances React.
 
-Définir un composant Clock et essayez d'implémenter une horologe. Faites en sorte que dans le DOM l'horloge se mette à jour et affiche les secondes, minutes et heures qui passent.
+Définir un composant **Clock** et essayez d'implémenter une horologe. Faites en sorte que dans le DOM l'horloge se mette à jour et affiche les secondes, minutes et heures qui passent.
 
 ```txt
   10h 25m 30s
 ```
+
+Indications :
+
+```js
+const time = new Date;
+// pour le rendu attention aux accolades pour interprétés le code dans le HTML
+time.toLocaleTimeString();
+```
+
+Pensez à reloader le ReactDOM.render avec le temps qui passe ...
