@@ -84,3 +84,11 @@ Définir un composant **Clock** et essayez d'implémenter une horologe. Faites e
 ```txt
   10h 25m 30s
 ```
+
+Indications :
+
+```js
+const time = new Date;
+// pour le rendu attention aux accolades pour interprétés le code dans le HTML
+time.toLocaleTimeString();
+```
