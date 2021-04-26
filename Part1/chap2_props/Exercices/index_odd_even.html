@@ -62,7 +62,7 @@
 
                 const { even, odd } = this.props;
 
-                const numbers = even ? this.even() : (odd ? this.odd() : [] );
+                const numbers = (even && odd ) ? this.even().concat(this.odd()) ;
                
                 return (
                     <div className="container">
@@ -79,8 +79,6 @@
             <App odd={true} even={true} />,
             document.getElementById('root')
         );
-       
-
     </script>
 </body>
 
