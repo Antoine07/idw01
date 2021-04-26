@@ -29,9 +29,7 @@ Vous pouvez également définir un composant avec une classe ES6. La classe devr
 
 ```js
 class HelloReact extends React.Component{
-  constructor(props){
-    super(props);
-  }
+ 
 
   render() {
       return (
