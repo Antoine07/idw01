@@ -58,18 +58,38 @@
                 return numberOdd;
             }
 
-            render() {
-
+            run(){
                 const { even, odd } = this.props;
+                const numbers = [];
 
-                const numbers = (even && odd ) ? this.even().concat(this.odd()) ;
+                if(even && odd === false) return this.even();
+                if(odd && even === false) return this.odd();
+
+                if(even && odd) {
+                    for (let i = 1; i <= 100; i++) numbers.push(i);
+
+                    return numbers;
+                }
+
+                return numbers;
+                
+            }
+
+            render() {
                
-                return (
+                if( this.run().length > 0 )
+                    return (
+                        <div className="container">
+                            <h1>Number Even </h1>
+                                <ul>
+                                    {this.run().map((num, i) => <li key={i}>{num}</li>)}
+                                </ul>
+                        </div>
+                    )
+
+                return(
                     <div className="container">
-                        <h1>Number Even </h1>
-                        <ul>
-                            {numbers.map((num, i) => <li key={i}>{num}</li>)}
-                        </ul>
+                        <p>Aucune valeur ...</p>
                     </div>
                 )
             }
