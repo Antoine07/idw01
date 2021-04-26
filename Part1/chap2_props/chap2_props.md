@@ -99,3 +99,14 @@ Pensez à reloader le ReactDOM.render avec le temps qui passe ...
 ## Exercice 
 
 Affichez de 1 à 100 les nombres pairs dans un composant. Utilisez deux composants App et Number.
+
+
+## Exercice 
+
+Créez un composant App et deux composants NumbersOdd et NumbersEven. Passez deux conditions dans les attributs du composant App afin d'afficher soit les NumbersOdd ou les NumbersEven ou les deux.
+
+```js
+
+<App  odd={true} even={false} />
+
+```
