@@ -76,6 +76,8 @@
                     this.draw();
                 
                 // démarrage des lignes suivantes ici ce code n'est exécuté que lorsque props change
+                // la précédente ligne passe de true à false et la suivante de false à true les autres restent à false
+                // c'est pourquoi on doit tester count === 0 pour éviter de re-lancer la fonction de la précédente ligne ... 
                 if (this.props.progress != prevProps.progress && this.state.count === 0) {
                     this.draw();
                 }
