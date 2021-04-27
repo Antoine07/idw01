@@ -36,7 +36,9 @@
             constructor(props){
                 super(props);
                 this.state = {
-                    count : 0
+                    count : 0,
+                    message : '',
+                    disabled : false
                 };
 
                 this.increment = this.increment.bind(this);
@@ -44,23 +46,36 @@
             }
 
             increment(){
-                this.setState({ count : this.state.count + 1 }) ;
+               
+                this.setState({ count : this.state.count + 1, message : '',  disabled : false }) ;
             }
 
             decrement(){
-                this.setState({ count : this.state.count - 1 }) ;
+
+                if( this.state.count === 0 ){
+
+                    this.setState({message : 'Attention vous ne pouvez pas décrémenter en dessous de 0', disabled : true}) ;
+
+                    return;
+                }
+
+                this.setState({ count : this.state.count - 1, message : '', disabled : false }) ;
             }
 
             render(){
 
-                const { count } = this.state;
+                const { count, message, disabled } = this.state;
 
                 return (
                     <div className="main">
                         <div>
                             <p>Counter : {count}</p>
+                            {/* le ET passif n'avalue pas la deuxième condition si la première est false */}
+                            { message !== '' && (
+                                <p>{message}</p>
+                            )}
                             <p><button onClick={this.increment}>+1</button></p>
-                            <p><button onClick={this.decrement}>-1</button></p>
+                            <p><button disabled={disabled} onClick={this.decrement}> -1</button></p>
                         </div>
                     </div>
                 )
