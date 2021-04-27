@@ -89,32 +89,9 @@ class Button extends React.Component{
 // ...
 ```
 
-**Deuxième solution avec la fonction fléchée :**
+## Exercice counter + / -
 
-Rappelons qu'une fonction fléchée ne possède pas de this. Si vous appelez le this dans celle-ci, il se rapportera au this du contexte de définition de la fonction.
-
-```js
-class Button extends React.Component{
-  constructor(props){
-    super(props);
-    // lié la méthode au this de la classe
-    // this.click = this.click.bind(this);
-  }
-
-  // arrow function
-  click = () => {
-    console.log(this.props);
-  }
-
-  render(){
-    return (
-      <button name="Hello React" onClick={this.click}>Clike Me !</button>
-    )
-  }
-}
-
-// ...
-```
+Créez deux boutons le premier incremente le compteur de + 1 et l'autre de moins -1. Affichez ce dernier dans le DOM.
 
 ## 1. Exercice Compteur
 
