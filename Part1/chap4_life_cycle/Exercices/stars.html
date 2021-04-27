@@ -20,10 +20,10 @@
             align-items: center;
             justify-content: center;
 
-            margin-top: 10%;
+            margin-top: 2%;
         }
 
-        .box > p {
+        .box > div {
             width: 700px;
             height: 100px;
             font-size: 2.5rem;
@@ -40,6 +40,7 @@
         const container = document.getElementById('root');
         const TIME = 500;
         const MAX_STAR = 20;
+        const NUMBER_LINE = 5;
 
         class Stars extends React.Component{
 
@@ -63,19 +64,24 @@
             }
 
             componentDidMount(){
-                this.draw();
+                // démarrage du premier
+                if( this.props.number === 1 )
+                    this.draw();
             }
 
             // méthode du life cycle qui va se déclencher uniquement lorsque un state ou une props change(nt)
             // attention le watch se fait sur les props et les states 
             componentDidUpdate(prevProps, prevStates){
-                if(prevStates.count != this.state.count && this.state.count < MAX_STAR) {
+                if(prevStates.count != this.state.count && this.state.count < MAX_STAR) 
+                    this.draw();
+                
+                // démarrage des lignes suivantes ici ce code n'est exécuté que lorsque props change
+                if (this.props.progress != prevProps.progress && this.state.count === 0) {
                     this.draw();
                 }
 
-                if( this.state.count === MAX_STAR && this.state.color === 'black' ){ this.setState({ color : 'palevioletred' }) ; console.log(this.state);};
-
-                //console.log('avant', prevStates, 'apres', this.state);
+                if( this.state.count === MAX_STAR && this.state.color === 'black' ) 
+                    this.setState({ color : 'palevioletred' }) ;
             }
 
             render(){
@@ -89,11 +95,40 @@
 
         class App extends React.Component{
 
+            constructor(props){
+                super(props);
+                this.state = {
+                    step: 1 // première ligne
+                }
+            }
+
+            draw(){
+                setTimeout(() => {
+                    this.setState({
+                        step: this.state.step + 1
+                    });
+                }, TIME * MAX_STAR);
+               
+            }
+
+            componentDidUpdate(prevProps, prevStates){
+                if(prevStates.step != this.state.step && this.state.step <= MAX_STAR) {
+                    this.draw();
+                }
+            }
+
+            componentDidMount() {
+                this.draw();
+            }
+
             render(){
+                const { step } = this.state;
 
                 return(
                     <div className="box">
-                        <Stars />
+                        <div>
+                            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num, i) => <Stars number={num} progress={ num  === step} key={i} /> ) }
+                        </div>
                     </div>
                 )
             }
