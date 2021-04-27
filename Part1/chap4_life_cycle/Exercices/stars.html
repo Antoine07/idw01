@@ -48,6 +48,7 @@
                 this.state = {
                     star: '',
                     count: 0,
+                    color : 'black'
                 }
             }
 
@@ -68,17 +69,20 @@
             // méthode du life cycle qui va se déclencher uniquement lorsque un state ou une props change(nt)
             // attention le watch se fait sur les props et les states 
             componentDidUpdate(prevProps, prevStates){
-                if(prevStates.count != this.state.count && this.state.count < 20) {
+                if(prevStates.count != this.state.count && this.state.count < MAX_STAR) {
                     this.draw();
                 }
+
+                if( this.state.count === MAX_STAR && this.state.color === 'black' ){ this.setState({ color : 'palevioletred' }) ; console.log(this.state);};
 
                 //console.log('avant', prevStates, 'apres', this.state);
             }
 
             render(){
+                const { color, star } = this.state; 
 
                 return(
-                    <p>{this.state.star}</p>
+                    <p style={{color : color }}>{star}</p>
                 )
             }
         }
