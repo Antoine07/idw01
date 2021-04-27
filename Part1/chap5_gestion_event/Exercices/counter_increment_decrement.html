@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 2%;
+        }
+
+        .box > div {
+            width: 700px;
+            height: 100px;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const CONTAINER = document.getElementById('root');
+        
+        class App extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    count : 0
+                };
+
+                this.increment = this.increment.bind(this);
+                this.decrement = this.decrement.bind(this);
+            }
+
+            increment(){
+                this.setState({ count : this.state.count + 1 }) ;
+            }
+
+            decrement(){
+                this.setState({ count : this.state.count - 1 }) ;
+            }
+
+            render(){
+
+                const { count } = this.state;
+
+                return (
+                    <div className="main">
+                        <div>
+                            <p>Counter : {count}</p>
+                            <p><button onClick={this.increment}>+1</button></p>
+                            <p><button onClick={this.decrement}>-1</button></p>
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<App />, CONTAINER);
+    </script>
+</body>
+
+</html>
