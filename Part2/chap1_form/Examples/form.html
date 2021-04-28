@@ -29,15 +29,27 @@
                 this.state = {
                     username : ''
                 };
+
+                // this.handleChange = this.handleChange.bind(this);
+            }
+
+            handleChange(event){
+                const {value, name } = event.target;
+
+                console.log(`value: ${value} name: ${name}`);
             }
 
             render(){
 
+                const { username } = this.state;
+
                 return(
                     <div>
                         <label>
-                            <input type="text" name="username" />
+                            Username :
+                            <input type="text" name="username" onChange={this.handleChange} />
                         </label>
+                        <p>{username}</p>
                     </div>
                 )
             }
