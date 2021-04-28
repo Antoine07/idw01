@@ -33,6 +33,12 @@
                 };
 
                 this.handleChange = this.handleChange.bind(this);
+                this.handleSubmit = this.handleSubmit.bind(this);
+            }
+
+            handleSubmit(event){
+                
+                event.preventDefault(); // Pour rester dans la philosophie SAP Single Application Page
             }
 
             handleChange(event){
@@ -52,7 +58,7 @@
                 const { username, name, age } = this.state;
 
                 return(
-                    <div>
+                    <form onSubmit={this.handleSubmit}>
                         <div>
                             <label>
                                 Username :
@@ -75,7 +81,11 @@
                             </label>
                             <p>{age}</p>
                         </div>
-                    </div>
+
+                        <div>
+                            <button>Ajouter</button>
+                        </div>
+                    </form>
                 )
             }
         }
