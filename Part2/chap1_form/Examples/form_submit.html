@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+
+        .principal {
+            background-color: beige;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class App extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    username : '',
+                    name : '',
+                    age : ''
+                };
+
+                this.handleChange = this.handleChange.bind(this);
+            }
+
+            handleChange(event){
+                const {value, name } = event.target;
+
+                console.log(`value: ${value} name: ${name}`);
+
+                // les crochets en JS permettent d'interpréter la valeur de name dynamiquement
+                // cela permet l'assignation en une ligne de n'importe quel champ nommé dans votre formulaire
+                // dans le state
+                // rmq sans les crochets le name correspond à la valeur name (clé) de votre state
+                this.setState({ [name] : value});
+            }
+
+            render(){
+
+                const { username, name, age } = this.state;
+
+                return(
+                    <div>
+                        <div>
+                            <label>
+                                Username :
+                                {/* Pensez à controler avec React la saisie des données dans le champ value plus cohérent. C'est React qui fait d'un bout à bout les choses*/}
+                                <input type="text" name="username" onChange={this.handleChange} value={username} />
+                            </label>
+                            <p>{username}</p>
+                        </div>
+                        <div>
+                            <label>
+                                name :
+                                <input type="text" name="name" onChange={this.handleChange} value={name} />
+                            </label>
+                            <p>{name}</p>
+                        </div>
+                        <div>
+                            <label>
+                                age :
+                                <input type="text" name="age" onChange={this.handleChange} value={age} />
+                            </label>
+                            <p>{age}</p>
+                        </div>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>
