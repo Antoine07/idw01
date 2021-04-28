@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <style>
+        .heading {
+            color: purple;
+        }
+
+        .principal {
+            background-color: beige;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const MAX_MULT = 100;
+
+        class Form extends React.Component{
+
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        number : '',
+                        multiples : [],
+                        message : ''
+                    }
+
+                    this.handleChange = this.handleChange.bind(this);
+                    this.handleSubmit = this.handleSubmit.bind(this);
+                }
+
+                handleChange(e){
+                    const { value, name } = e.target;
+
+                    this.setState({
+                        [name] : value,
+                        message : '',
+                        multiples : []
+                    });
+                }
+
+                handleSubmit(e){
+                    e.preventDefault();
+
+                    const { number, multiples } = this.state;
+
+                    if(number.trim() === ''){
+                        this.setState({
+                            message : 'Attention votre champ est vide'
+                        })
+
+                        return;
+                    }
+
+                    if( parseInt(number) !=  number ){
+                        this.setState({
+                            message : 'Attention vous devez mettre un nombre entier'
+                        })
+
+                        return;
+                    }
+
+                    if( Math.abs( parseInt(number) ) > MAX_MULT ||  parseInt(number) === 0 ){
+                        this.setState({
+                            message : `Attention vous dépassez le maximum autorisé en absolu :${MAX_MULT} ou votre valeur est égale à 0`
+                        })
+
+                        return;
+                    }
+
+                    this.setState({
+                        multiples : this.multiples(parseInt(number)),
+                        message : `Voici les multiples de ${number}`,
+                        number : ''
+                    });
+                }
+
+                multiples(number){
+                    let [i, mul, res ] = [1, 0, []];
+
+                    while(true){
+
+                        mul = number * i;
+
+                        if(Math.abs(mul) > MAX_MULT) break;
+
+                        res.push(mul);
+                        i++;
+                    }
+
+                    return res;
+                }
+
+                render(){
+                    const { number, multiples, message } = this.state;
+
+                    return(
+                        <React.Fragment>
+                            <form onSubmit={this.handleSubmit}>
+                                <div className="mb-3">
+                                    <label htmlFor="number" className="form-label">Number:</label>
+                                    <select name="number" value={number} onChange={this.handleChange} >
+                                        {/* une astuce pour générer un tableau de 11 élément facilement avec le spread operator */}
+                                        {[ ...Array(11).keys() ].map((num, i) => <option key={i} value={num + 1}>{num + 1}</option>)}
+                                    </select>
+                                </div>
+                                <button type="submit" className="btn btn-primary">Calculer</button>
+                            </form>
+                            {message !== '' && (
+                                <p>{message}</p>
+                            ) }
+
+                            {multiples.length > 0 && (
+                                <ul>
+                                    {multiples.map( (num, i) => <li key={i}>{num}</li> ) }
+                                </ul>
+                            )}
+                        </React.Fragment>
+                    );
+                }
+            }
+
+
+        class App extends React.Component{
+            
+            render(){
+                return(
+                    <div className="container">
+                        <Form />
+                    </div> 
+                )
+            }
+        }
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>
