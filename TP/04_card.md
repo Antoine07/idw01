@@ -1,12 +1,10 @@
 # TP Card
 
-Vous allez créer un jeu utilisant les technologies suivantes (contraintes) :
+Vous allez créer un panier utilisant les technologies suivantes (contraintes) :
 
 - React.
 
 - Bootstrap Twitter pour les styles.
-
-- Bootstrap Twitter.
 
 - CRA squelette d'application.
 
@@ -24,17 +22,17 @@ Bienvenue dans notre boutique
 [ Home ] [ nos fruits ] Votre panier est vide 
 -------------------------------
 
-Bienvenu sur notre boutique Bio.
+Bienvenu sur notre boutique de fruits Bios.
 
 ```
 
 ## Page home 
 
-Sur cette page présentez la boutique Bio en ligne.
+Sur cette page présentez la boutique Bio en ligne. Voir le Wireframe ci-dessus.
 
 ## Page "Commencer une commande"
 
-Sur cette page présentez uniquement 3 produits. Vous donnerez la possibilité de définir une quantité pour un produit et la possibilité de remettre à 0 les quantités de tout le panier.
+Sur cette page présentez uniquement 3 produits (fruits). Vous donnerez la possibilité de définir une quantité pour chaque produit et la possibilité de remettre à 0 le panier ou de remettre à 0 chaque quantité de produit.
 
 ```txt
 
@@ -44,8 +42,7 @@ Bienvenue dans notre boutique
 [ Home ] [ nos fruits ] [voir votre panier, 7 produits]
 -------------------------------
 
-
-[Reset] [ajouter au panier]
+[Reset] 
 
 - apple [10]  [reset]
 
@@ -57,9 +54,9 @@ Bienvenue dans notre boutique
 
 ```
 
-## Page panier
+## Page panier (facultatif)
 
-Cette page présentera l'ensemble des produits "à payer". Une fois cliquer sur **payer** l'ensemble des produits seront stockés dans votre state.
+Cette page présentera l'ensemble des produits "à payer". Une fois cliquer sur **payer** l'ensemble des produits seront stockés dans votre state. Vous pouvez implémenter une persistance avec du localStorage.
 
 ```txt
 
