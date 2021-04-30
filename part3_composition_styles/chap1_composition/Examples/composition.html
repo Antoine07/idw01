@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+        .heading {
+            color: purple;
+        }
+
+        .principal {
+            background-color: beige;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+
+        class Sidebar extends React.Component{
+
+
+            render(){
+
+                return(
+                    <div className="sidebar">
+                        Sidebar 
+                    </div>
+                )
+            }
+
+        }
+
+        class App extends React.Component{
+
+
+            render(){
+
+                return(
+                    <Container sidebar={<Sidebar />} >
+                        { [1,2,3,4,5].map((post, i) => 
+                            <div className="post" key={i}>
+                                <header>
+                                        <h1>{post}</h1>
+                                </header>
+                            </div>
+                        )}
+                    </Container>
+                );
+            }
+        }
+
+        class Container extends React.Component{
+
+
+            render(){
+
+                return(
+                    <div className="main">
+                        <div className="sidebar">
+                            {this.props.sidebar}
+                        </div>
+                        {/* propriété React qui permet de faire de la composition */}
+                        {this.props.children}
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <App />,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>
