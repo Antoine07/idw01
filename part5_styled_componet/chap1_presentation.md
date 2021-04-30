@@ -128,6 +128,10 @@ export default App;
 
 ## Exercice
 
+Créez un bouton qui affiche un message et un autre qui le retire du DOM (efface). Utilisez le même bouton stylisé avec styled component.
+
+## Exercice
+
 Dans le code de l'exemple styled (CRA), faites en sorte que lorsque vous appuyez sur Yes ou No un message s'affiche en dessous dans un bloc stylisé. Mettez en place un rendu spécifique en fonction du choix Yes et respectivement No.
 
 Ajoutez un bouton reset pour retirer le message sous le premier bloc. Gérez un troisième rendu pour ce bouton. Essayez de créez qu'un seul Button que vous styliserez en fonction du type de bouton.
@@ -138,7 +142,6 @@ Ajoutez un composant Input que vous stylisez sous les boutons Yes, No et Reset. 
 Affichez la liste des nombres ajoutés sur une ligne au dessus du titre de l'application.
 
 ``text
-    7, 11, 8, 10
 
             Hello world!
 
